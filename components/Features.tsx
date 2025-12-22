@@ -43,7 +43,10 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <section className="relative z-30 mt-[-50px] rounded-t-[40px] lg:rounded-t-[60px] py-32 bg-slate-50 overflow-hidden">
+    <section
+      className="relative z-30 mt-[-50px] rounded-t-[40px] lg:rounded-t-[60px] py-32 bg-slate-50 overflow-hidden"
+      id="servicios"
+    >
       {/* Background Elements */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent opacity-50"></div>
       <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 pointer-events-none"></div>

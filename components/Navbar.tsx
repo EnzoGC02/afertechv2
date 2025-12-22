@@ -6,11 +6,11 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const navLinks = [
-    { name: "Empresa", href: "#" },
-    { name: "Servicios", href: "#" },
-    { name: "Casos de Éxito", href: "#" },
-    { name: "Proyectos", href: "#" },
-    { name: "Contacto", href: "#" },
+    { name: "Empresa", href: "#inicio" },
+    { name: "Servicios", href: "#servicios" },
+    // { name: "Casos de Éxito", href: "#" },
+    { name: "Proyectos", href: "#contacto" },
+    { name: "Contacto", href: "#contacto" },
   ];
 
   return (

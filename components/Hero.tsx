@@ -12,7 +12,10 @@ import {
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-[95vh] flex items-center pt-20 overflow-hidden bg-white">
+    <section
+      className="relative min-h-[95vh] flex items-center pt-20 overflow-hidden bg-white"
+      id="inicio"
+    >
       {/* Background: Industrial cabling/server context */}
       <div className="absolute inset-0 z-0">
         <img

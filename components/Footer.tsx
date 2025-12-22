@@ -3,8 +3,15 @@ import { Mail, Phone, MapPin, Globe, User } from "lucide-react";
 import Logo from "./Logo";
 
 const Footer: React.FC = () => {
+  const contactInfo = {
+    manager: "Aldo Daniel Fernandez Usair",
+    email: "afernandez@afertech.com.ar",
+    phone: "2645127025",
+    whatsappLink: "https://wa.me/2645127025",
+  };
+
   return (
-    <footer className="bg-slate-900 pt-12 md:pt-24 pb-6 md:pb-12">
+    <footer className="bg-slate-900 pt-12 md:pt-24 pb-6 md:pb-12" id="contacto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-20">
           <div className="md:col-span-5 space-y-8">
@@ -20,18 +27,28 @@ const Footer: React.FC = () => {
               <div className="flex items-center gap-3 text-slate-400">
                 <User size={18} className="text-blue-400" />
                 <span className="text-sm font-bold text-white">
-                  Gerente: Aldo Daniel Fernandez Usair
+                  Gerente: {contactInfo.manager}
                 </span>
               </div>
               <div className="flex items-center gap-3 text-slate-400">
                 <Mail size={18} className="text-blue-400" />
-                <span className="text-sm font-bold">
-                  afernandez@afertech.com.ar
-                </span>
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="text-sm font-bold hover:text-white transition-colors"
+                >
+                  {contactInfo.email}
+                </a>
               </div>
               <div className="flex items-center gap-3 text-slate-400">
                 <Phone size={18} className="text-blue-400" />
-                <span className="text-sm font-bold">Cel: 2645127025</span>
+                <a
+                  href={contactInfo.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-bold hover:text-white transition-colors"
+                >
+                  Cel: {contactInfo.phone}
+                </a>
               </div>
             </div>
           </div>
