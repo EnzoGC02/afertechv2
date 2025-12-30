@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  ChevronRight,
-  Shield,
-  Cpu,
-  Gauge,
-  Zap,
-  BarChart3,
-  Database,
-  Workflow,
-} from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const Hero: React.FC = () => {
   return (
@@ -50,13 +41,19 @@ const Hero: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <button className="bg-blue-900 hover:bg-blue-950 text-white px-10 py-4 rounded-sm text-sm font-black transition-all duration-300 shadow-xl shadow-blue-900/10 flex items-center justify-center gap-3 uppercase tracking-widest">
+              <a
+                href="#servicios"
+                className="bg-blue-900 hover:bg-blue-950 text-white px-10 py-4 rounded-sm text-sm font-black transition-all duration-300 shadow-xl shadow-blue-900/10 flex items-center justify-center gap-3 uppercase tracking-widest"
+              >
                 Nuestros Servicios
                 <ChevronRight size={16} />
-              </button>
-              <button className="bg-white hover:bg-slate-50 text-blue-900 border-2 border-blue-900/10 px-10 py-4 rounded-sm text-sm font-black transition-all duration-300 flex items-center justify-center gap-2 uppercase tracking-widest">
+              </a>
+              <a
+                href="#contacto"
+                className="bg-white hover:bg-slate-50 text-blue-900 border-2 border-blue-900/10 px-10 py-4 rounded-sm text-sm font-black transition-all duration-300 flex items-center justify-center gap-2 uppercase tracking-widest"
+              >
                 Consultoría Técnica
-              </button>
+              </a>
             </div>
 
             {/* Bottom Grid: Refined Keywords */}
@@ -103,14 +100,15 @@ const Hero: React.FC = () => {
                 alt="Proyectos de Ingeniería Industrial"
                 className="w-full aspect-square object-cover"
               />
-              <div className="absolute top-6 -left-6 p-4 bg-blue-900 text-white shadow-xl -rotate-2">
-                <Shield size={24} className="mb-2" />
-                <p className="text-xs font-black uppercase tracking-widest">
-                  Garantía de Calidad
-                </p>
-                <p className="text-[10px] opacity-80">
-                  Ingeniería certificada y normativa internacional
-                </p>
+              <div className="absolute top-6 -left-6 md:top-10 md:-left-10 bg-slate-900/95 backdrop-blur-md px-5 py-3 rounded-lg border border-white/10 shadow-2xl shadow-blue-900/30 -rotate-2 hover:rotate-0 transition-all duration-300 group">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-0.5">
+                    Certificado
+                  </p>
+                  <p className="text-sm font-bold text-white leading-tight">
+                    Garantía de Calidad
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -127,5 +125,37 @@ const Hero: React.FC = () => {
     </section>
   );
 };
+
+const QualitySeal = ({
+  size = 24,
+  className = "",
+}: {
+  size?: number;
+  className?: string;
+}) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path
+      d="M12 2L14.8 4.2L18.4 4.2L19.4 7.7L22.5 9.3L21.9 12.9L23.6 16L20.8 18.2L19.8 21.7L16.2 21.1L13.4 23.3L10.6 21.1L7 21.7L6 18.2L3.2 16L4.9 12.9L4.3 9.3L7.4 7.7L8.4 4.2L12 4.2L14.8 2Z"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M9 12L11 14L15 10"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 export default Hero;

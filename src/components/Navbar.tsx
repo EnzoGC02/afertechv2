@@ -8,13 +8,12 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { name: "Empresa", href: "#inicio" },
     { name: "Servicios", href: "#servicios" },
-    // { name: "Casos de Éxito", href: "#" },
-    { name: "Proyectos", href: "#contacto" },
+    { name: "Proyectos", href: "#proyectos" },
     { name: "Contacto", href: "#contacto" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
@@ -32,10 +31,13 @@ const Navbar: React.FC = () => {
                 {link.name}
               </a>
             ))}
-            <button className="bg-blue-900 hover:bg-blue-950 text-white px-6 py-2.5 rounded-sm text-[11px] font-black transition-all duration-300 flex items-center gap-2 uppercase tracking-[0.15em]">
+            <a
+              className="bg-blue-900 hover:bg-blue-950 text-white px-6 py-2.5 rounded-sm text-[11px] font-black transition-all duration-300 flex items-center gap-2 uppercase tracking-[0.15em]"
+              href="#contacto"
+            >
               Presupuestos
               <ArrowRight size={14} />
-            </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}

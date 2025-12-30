@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import SectionHeader from "./SectionHeader";
 
 const Features: React.FC = () => {
   const services = [
@@ -36,8 +37,7 @@ const Features: React.FC = () => {
     {
       title: "Capacitación Especializada",
       desc: "Potenciamos el talento de su organización mediante programas de formación técnica avanzada. Transformamos las capacidades de su personal operativo y administrativo, asegurando un dominio experto de las nuevas tecnologías y mejores prácticas de la industria.",
-      image:
-        "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800",
+      image: "/images/servicios/imagenCapacitacion.png",
       tag: "CAPACITACIÓN",
     },
   ];
@@ -54,41 +54,34 @@ const Features: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
-        <div className="max-w-3xl mx-auto text-center mb-24">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-6">
-            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-800">
-              Nuestra Misión: Su Evolución Industrial
-            </span>
-          </div>
-
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight leading-[1.1]">
-            Fortalecemos su empresa mediante la{" "}
-            <span className="text-blue-800 relative inline-block">
-              optimización
-              <svg
-                className="absolute w-full h-3 -bottom-1 left-0 text-blue-200 -z-10"
-                viewBox="0 0 100 10"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0 5 Q 50 10 100 5"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                  fill="none"
-                />
-              </svg>
-            </span>{" "}
-            inteligente.
-          </h2>
-
-          <p className="text-lg text-slate-600 font-medium leading-relaxed">
-            Transformamos los desafíos técnicos en oportunidades de crecimiento
-            sostenible, combinando experiencia técnica multidisciplinaria con
-            soluciones de vanguardia que definen el estándar de la industria
-            moderna.
-          </p>
-        </div>
+        <SectionHeader
+          badge="Nuestra Misión: Su Evolución Industrial"
+          badgeIcon={
+            <span className="w-2 h-2 rounded-full bg-blue-700 animate-pulse"></span>
+          }
+          title={
+            <>
+              Fortalecemos su empresa mediante la{" "}
+              <span className="text-blue-700 relative inline-block">
+                optimización
+                <svg
+                  className="absolute w-full h-3 -bottom-1 left-0 text-blue-200 -z-10"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0 5 Q 50 10 100 5"
+                    stroke="currentColor"
+                    strokeWidth="8"
+                    fill="none"
+                  />
+                </svg>
+              </span>{" "}
+              inteligente.
+            </>
+          }
+          description="Transformamos los desafíos técnicos en oportunidades de crecimiento sostenible, combinando experiencia técnica multidisciplinaria con soluciones de vanguardia que definen el estándar de la industria moderna."
+        />
 
         {/* Grid Section */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-8">
@@ -122,7 +115,7 @@ const Features: React.FC = () => {
                 {/* Text Content */}
                 <div className="flex-1 p-6 bg-white group-hover:bg-transparent transition-colors duration-300 flex flex-col">
                   <div className="flex justify-between items-start mb-4">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1 rounded-full group-hover:bg-white/10 group-hover:text-white transition-colors">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-blue-700 bg-blue-50 px-3 py-1 rounded-full group-hover:bg-white/10 group-hover:text-white transition-colors">
                       {service.tag}
                     </span>
                   </div>
@@ -141,7 +134,7 @@ const Features: React.FC = () => {
                     </span>
                     <a
                       href="#contacto"
-                      className="text-blue-600 text-xs font-black uppercase tracking-widest flex items-center gap-2 group-hover:text-white transition-colors"
+                      className="text-blue-700 text-xs font-black uppercase tracking-widest flex items-center gap-2 group-hover:text-white transition-colors"
                     >
                       Consultar <ArrowRight size={14} />
                     </a>
