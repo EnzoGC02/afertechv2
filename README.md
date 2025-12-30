@@ -1,20 +1,41 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Afertech | Ingeniería y Montaje Industrial
 
-# Run and deploy your AI Studio app
+Sitio web institucional para **Afertech**, especialistas en arquitecturas de control, software industrial e infraestructura eléctrica de alto desempeño.
 
-This contains everything you need to run your app locally.
+## 🚀 Acerca del Proyecto
 
-View your app in AI Studio: https://ai.studio/apps/drive/193l9uzhD48WheCUGqsj35L47R5aCzOMW
+Este proyecto es una landing page moderna y responsiva diseñada para presentar los servicios de ingeniería y automatización de Afertech.
 
-## Run Locally
+### Características Principales
 
-**Prerequisites:**  Node.js
+- **Diseño Moderno:** Interfaz limpia y profesional orientada al sector industrial.
+- **Secciones:** Inicio, Servicios, Proyectos y Contacto.
+- **Formulario de Contacto:** Integración funcional para consultas y presupuestos.
+- **Tecnología:** Construido con React y TypeScript para robustez y mantenibilidad.
 
+## 🛠️ Tecnologías Utilizadas
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- **Frontend:** React, TypeScript
+- **Estilos:** Tailwind CSS (vía CDN para prototipado rápido)
+- **Iconos:** Lucide React
+- **Fuentes:** Google Fonts (Inter)
+
+## 💻 Instalación y Uso Local
+
+Sigue estos pasos para ejecutar el proyecto en tu entorno local:
+
+1. **Instalar dependencias:**
+
+   ```bash
+   npm install
+   ```
+
+2. **Ejecutar el servidor de desarrollo:**
+   ```bash
+   npm run dev
+   ```
+
+---
+
+© Afertech - Ingeniería y Automatización.
+2026
