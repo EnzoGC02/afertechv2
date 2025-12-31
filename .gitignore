@@ -12,6 +12,7 @@ node_modules/
 
 # Vite / Build & Test output
 dist/
+dist.zip
 dist-ssr/
 .vite/
 coverage/
