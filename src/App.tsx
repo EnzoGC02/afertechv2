@@ -8,7 +8,7 @@ import Clients from "./components/Clients";
 import Contact from "./components/Contact";
 import { AppConfig } from "./config";
 
-const App: React.FC = ({ config }: { config: AppConfig }) => {
+const App: React.FC = ({ config }: { config?: AppConfig }) => {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-blue-700/20">
       <Navbar />
@@ -18,7 +18,7 @@ const App: React.FC = ({ config }: { config: AppConfig }) => {
         <Features />
         <Projects />
         <Clients />
-        <Contact apiUrl={config.apiUrl} />
+        <Contact apiUrl={config?.apiUrl} />
       </main>
     </div>
   );
