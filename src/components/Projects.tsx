@@ -12,43 +12,131 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
+    title: "Puesta en marcha de Generador Caterpillar",
+    description:
+      "Adecuación, montaje eléctrico, programación y puesta en servicio del modelo CAT C4.4 DITA.",
+    technologies: [
+      "Caterpillar",
+      "Generación",
+      "Eléctrica",
+      "Puesta en Marcha",
+    ],
+    features: [
+      "Montaje eléctrico",
+      "Programación",
+      "Test y servicio",
+      "Adecuación técnica",
+    ],
+    image: "/images/proyectos/Puesta_en_marcha.png",
+  },
+  {
     title: "Sistema Micronizado de Óxido",
     description:
-      "Automatización del proceso de micronización (temperatura, presión y granulometría) con SCADA y alarmas.",
-    technologies: ["PLC Siemens", "SCADA", "Control de Proceso", "HMI"],
+      "Diseño integral de ingeniería eléctrica y control, programación de variadores (Profinet/Profibus) y SCADA.",
+    technologies: ["PLC", "SCADA", "Profinet", "Variadores"],
     features: [
-      "Control automático de proceso",
-      "Monitoreo en tiempo real",
-      "Sistema de alarmas",
-      "Reportes de producción",
+      "Ingeniería de control",
+      "Programación VDF",
+      "Precomisionado",
+      "Puesta en marcha",
     ],
-    image: "images/proyectos/micronizado.png", // Asegúrate de tener esta imagen o cambiar la ruta
+    image: "/images/proyectos/micronizado.png",
   },
   {
     title: "Sistema de Trituración de Piedra",
     description:
-      "Control multi-etapa, clasificación granulométrica y transporte integrado con optimización energética.",
-    technologies: ["Allen Bradley", "EtherNet/IP", "Variadores", "Sensores"],
+      "Precomisionado de señales, programación de variadores de frecuencia, PLC y sistema SCADA.",
+    technologies: ["PLC", "SCADA", "Variadores", "Automatización"],
     features: [
-      "Control de múltiples etapas",
-      "Clasificación automática",
-      "Optimización energética",
-      "Mantenimiento predictivo",
+      "Precomisionado",
+      "Programación PLC/VDF",
+      "Sistema SCADA",
+      "Puesta en marcha",
     ],
-    image: "/images/proyectos/triturado.png", // Asegúrate de tener esta imagen o cambiar la ruta
+    image: "/images/proyectos/triturado.png",
   },
   {
-    title: "Tableros de Potencia y Control",
+    title: "Clasificación y Molienda",
     description:
-      "Diseño/fabricación de tableros con protecciones, documentación y certificaciones técnicas.",
-    technologies: ["AutoCAD Electrical", "Schneider", "ABB", "Protecciones"],
+      "Diseño de sistema SCADA e ingeniería de control, con programación de PLC y variadores de frecuencia.",
+    technologies: ["SCADA", "Ingeniería Control", "PLC", "Molienda"],
     features: [
-      "Diseño personalizado",
-      "Protecciones integrales",
-      "Certificaciones técnicas",
-      "Documentación completa",
+      "Diseño SCADA",
+      "Programación VDF",
+      "Precomisionamiento",
+      "Puesta en marcha",
     ],
-    image: "/images/proyectos/tablero.png", // Asegúrate de tener esta imagen o cambiar la ruta
+    image: "/images/proyectos/molienda.png",
+  },
+  {
+    title: "Tableros de Potencia y Distribución",
+    description:
+      "Diseño y fabricación integral de tableros de distribución y autosoportados con pruebas FAT.",
+    technologies: ["Tableros", "Potencia", "Pruebas FAT", "Diseño Eléctrico"],
+    features: [
+      "Distribución y Comando",
+      "Pruebas FAT",
+      "Montaje y Cableado",
+      "Ingeniería de detalle",
+    ],
+    image: "/images/proyectos/tablero.png",
+  },
+  {
+    title: "Migración PLC - Trituración Primaria",
+    description:
+      "Actualización tecnológica, adecuación de tableros, programación de PLC y diseño de planos eléctricos.",
+    technologies: [
+      "Migración PLC",
+      "SCADA",
+      "Planos Eléctricos",
+      "Instrumentación",
+    ],
+    features: [
+      "Adecuación tableros",
+      "Programación PLC",
+      "Diseño SCADA",
+      "Puesta en marcha",
+    ],
+    image: "/images/proyectos/migracion_trituracion.png",
+  },
+  {
+    title: "Automatización Planta de Mezclas",
+    description:
+      "Diseño de tableros, montaje de válvulas, SCADA, PLC e integración con software de producción.",
+    technologies: ["Automatización", "Neumática", "SCADA", "Integración ERP"],
+    features: [
+      "Tableros Control/Potencia",
+      "Válvulas Neumáticas",
+      "Software Producción",
+      "Ingeniería Eléctrica",
+    ],
+    image: "/images/proyectos/automatizacion_mezclas.png",
+  },
+  {
+    title: "Migración PLC y SCADA Planta de Cal",
+    description:
+      "Migración de PLC Siemens S7-300, diseño de diagrama de flujo de procesos y adecuación de equipos.",
+    technologies: ["Siemens S7-300", "Migración", "SCADA", "Procesos"],
+    features: [
+      "Diagrama de Flujo",
+      "Migración PLC",
+      "Adecuación Equipos",
+      "Puesta en marcha",
+    ],
+    image: "/images/proyectos/planta_cal.png",
+  },
+  {
+    title: "Mantenimiento Draga Dammen",
+    description:
+      "Cableado de potencia/control, configuración Profinet y reacondicionamiento de motores diésel Perkin.",
+    technologies: ["Naval", "Profinet", "Motores Perkin", "Harting Han"],
+    features: [
+      "Cableado Potencia",
+      "Red Profinet",
+      "Motores Diésel",
+      "Adecuación Medidores",
+    ],
+    image: "/images/proyectos/draga_dammen.png",
   },
 ];
 
@@ -135,9 +223,9 @@ const Projects: React.FC = () => {
             </div>
 
             {/* Panel "Runs" Flotante (Estilo Dashboard) */}
-            <div className="absolute left-4 right-4 bottom-4 md:left-6 md:right-6 md:bottom-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-2xl overflow-hidden">
+            <div className="absolute left-2 right-2 bottom-2 md:left-6 md:right-6 md:bottom-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-2xl overflow-hidden">
               {/* Header del Panel */}
-              <div className="flex items-center justify-between px-3 py-2 md:px-4 md:py-3 border-b border-white/10 bg-white/5">
+              <div className="flex items-center justify-between px-3 py-1.5 md:px-4 md:py-3 border-b border-white/10 bg-white/5">
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-500 animate-pulse" />
                   <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/70">
@@ -152,7 +240,7 @@ const Projects: React.FC = () => {
               </div>
 
               {/* Lista de Features */}
-              <ul className="p-3 md:p-4 grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
+              <ul className="p-2 md:p-4 grid grid-cols-2 gap-2 md:gap-3">
                 {project.features.map((f) => (
                   <li
                     key={f}
@@ -165,7 +253,7 @@ const Projects: React.FC = () => {
               </ul>
 
               {/* Footer del Panel con CTA */}
-              <div className="px-3 py-2 md:px-4 md:py-3 border-t border-white/10 bg-white/5 flex justify-end">
+              <div className="px-3 py-1.5 md:px-4 md:py-3 border-t border-white/10 bg-white/5 flex justify-end">
                 <a
                   href="#contacto"
                   className="inline-flex items-center gap-2 text-[10px] md:text-xs font-black uppercase tracking-widest text-white hover:text-blue-200 transition-colors"

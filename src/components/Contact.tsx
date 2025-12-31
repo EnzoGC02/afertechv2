@@ -1,8 +1,81 @@
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, ArrowRight, MessageSquare } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+  MessageSquare,
+  CheckCircle2,
+  AlertCircle,
+  X,
+  Download,
+} from "lucide-react";
 import SectionHeader from "./SectionHeader";
-const URL_API = "http://localhost/api/contact.php?debug=1";
-const Contact: React.FC = () => {
+
+const ContactItem = ({
+  icon,
+  title,
+  value,
+  href,
+  target,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+  href: string;
+  target?: string;
+}) => (
+  <a
+    href={href}
+    target={target}
+    className="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-900/50 border border-transparent hover:border-slate-800 transition-all group"
+  >
+    <div className="size-12 rounded-xl bg-slate-900 flex items-center justify-center text-slate-500 group-hover:text-blue-400 group-hover:scale-110 transition-all shadow-inner shadow-black/50 border border-slate-800">
+      {icon}
+    </div>
+    <div>
+      <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-0.5">
+        {title}
+      </p>
+      <p className="text-slate-300 font-medium group-hover:text-white transition-colors">
+        {value}
+      </p>
+    </div>
+  </a>
+);
+
+const InputGroup = ({
+  label,
+  placeholder,
+  type = "text",
+  name,
+  value,
+  onChange,
+}: {
+  label: string;
+  placeholder: string;
+  type?: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}) => (
+  <div className="space-y-2">
+    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1">
+      {label}
+    </label>
+    <input
+      type={type}
+      name={name}
+      value={value}
+      onChange={onChange}
+      required
+      className="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+      placeholder={placeholder}
+    />
+  </div>
+);
+
+const Contact: React.FC = ({ apiUrl }: { apiUrl: string }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -11,6 +84,10 @@ const Contact: React.FC = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [notification, setNotification] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -21,9 +98,10 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setNotification(null);
 
     try {
-      const response = await fetch(URL_API, {
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -32,7 +110,11 @@ const Contact: React.FC = () => {
       });
 
       if (response.ok) {
-        alert("Mensaje enviado con éxito.");
+        setNotification({
+          type: "success",
+          message:
+            "Su consulta ha sido enviada. Nos pondremos en contacto a la brevedad.",
+        });
         setFormData({
           firstName: "",
           lastName: "",
@@ -40,13 +122,20 @@ const Contact: React.FC = () => {
           company: "",
           message: "",
         });
+        setTimeout(() => setNotification(null), 6000);
       } else {
         const text = await response.text();
-        alert(`Error: ${text}`);
+        setNotification({
+          type: "error",
+          message: `No se pudo enviar: ${text}`,
+        });
       }
     } catch (error) {
       console.error(error);
-      alert("Error al conectar con el servidor.");
+      setNotification({
+        type: "error",
+        message: "Error de conexión. Verifique su red e intente nuevamente.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -107,6 +196,26 @@ const Contact: React.FC = () => {
                 target="_blank"
                 href="https://www.google.com/maps/place/Afertech/@-31.5084713,-68.5810228,15z/data=!4m14!1m7!3m6!1s0x968141001eed3f25:0xbc5bfebf9d577d7c!2sAfertech!8m2!3d-31.5100565!4d-68.5927245!16s%2Fg%2F11ly_9rs6l!3m5!1s0x968141001eed3f25:0xbc5bfebf9d577d7c!8m2!3d-31.5100565!4d-68.5927245!16s%2Fg%2F11ly_9rs6l?hl=es&entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D"
               />
+            </div>
+
+            <div className="pt-6 border-t border-slate-800/50">
+              <a
+                href="/docs/AFERTECH.pdf"
+                download
+                className="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-blue-500/30 hover:bg-slate-800 transition-all group"
+              >
+                <div className="size-12 rounded-xl bg-blue-900/20 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+                  <Download size={20} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-blue-300 mb-0.5 transition-colors">
+                    Institucional
+                  </p>
+                  <p className="text-sm font-bold text-slate-200 group-hover:text-white transition-colors">
+                    Carta de Presentación
+                  </p>
+                </div>
+              </a>
             </div>
           </div>
 
@@ -176,85 +285,64 @@ const Contact: React.FC = () => {
         </div>
 
         {/* Footer Integrado */}
-        <div className="mt-24 pt-8 border-t border-slate-800 text-center">
+        <div className="mt-24 pt-8 border-t border-slate-800 flex flex-col items-center">
           <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} Afertech. Ingeniería y Automatización.
           </p>
-          <p className="text-slate-600 text-xs mt-2">
+          <a
+            href="https://wa.me/2645689336"
+            target="_blank"
+            className="text-slate-600 text-xs mt-2"
+          >
             Desarrollado por:{" "}
             <span className="text-slate-500 hover:text-blue-400 transition-colors cursor-pointer">
-              Tu Nombre/Agencia
+              Bit a Bit
             </span>
-          </p>
+          </a>
         </div>
       </div>
+
+      {/* Notificación Toast Flotante */}
+      {notification && (
+        <div
+          className={`fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 max-w-sm w-full p-4 rounded-xl shadow-2xl border backdrop-blur-md flex items-start gap-4 animate-[slideIn_0.4s_ease-out] ${
+            notification.type === "success"
+              ? "bg-slate-900/95 border-green-500/30 text-green-100 shadow-green-900/20"
+              : "bg-slate-900/95 border-red-500/30 text-red-100 shadow-red-900/20"
+          }`}
+        >
+          {notification.type === "success" ? (
+            <CheckCircle2 className="size-6 text-green-500 shrink-0" />
+          ) : (
+            <AlertCircle className="size-6 text-red-500 shrink-0" />
+          )}
+          <div className="flex-1">
+            <h4 className="font-bold text-sm mb-1">
+              {notification.type === "success"
+                ? "¡Mensaje Enviado!"
+                : "Error de Envío"}
+            </h4>
+            <p className="text-xs opacity-90 leading-relaxed">
+              {notification.message}
+            </p>
+          </div>
+          <button
+            onClick={() => setNotification(null)}
+            className="text-white/40 hover:text-white transition-colors"
+          >
+            <X size={18} />
+          </button>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 };
-
-// Componentes Auxiliares para limpieza del código
-
-const ContactItem = ({
-  icon,
-  title,
-  value,
-  href,
-  target,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  value: string;
-  href: string;
-  target?: string;
-}) => (
-  <a
-    href={href}
-    target={target}
-    className="flex items-center gap-4 p-4 rounded-2xl hover:bg-slate-900/50 border border-transparent hover:border-slate-800 transition-all group"
-  >
-    <div className="size-12 rounded-xl bg-slate-900 flex items-center justify-center text-slate-500 group-hover:text-blue-400 group-hover:scale-110 transition-all shadow-inner shadow-black/50 border border-slate-800">
-      {icon}
-    </div>
-    <div>
-      <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-0.5">
-        {title}
-      </p>
-      <p className="text-slate-300 font-medium group-hover:text-white transition-colors">
-        {value}
-      </p>
-    </div>
-  </a>
-);
-
-const InputGroup = ({
-  label,
-  placeholder,
-  type = "text",
-  name,
-  value,
-  onChange,
-}: {
-  label: string;
-  placeholder: string;
-  type?: string;
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}) => (
-  <div className="space-y-2">
-    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1">
-      {label}
-    </label>
-    <input
-      type={type}
-      name={name}
-      value={value}
-      onChange={onChange}
-      required
-      className="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-      placeholder={placeholder}
-    />
-  </div>
-);
 
 export default Contact;

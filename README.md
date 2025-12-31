@@ -24,13 +24,20 @@ Este proyecto es una landing page moderna y responsiva diseñada para presentar 
 
 Sigue estos pasos para ejecutar el proyecto en tu entorno local:
 
-1. **Instalar dependencias:**
+1. **Clonar el repositorio:**
+
+   ```bash
+   git clone https://github.com/EnzoGC02/afertechv2
+   cd afertechv2
+   ```
+
+2. **Instalar dependencias:**
 
    ```bash
    npm install
    ```
 
-2. **Ejecutar el servidor de desarrollo:**
+3. **Ejecutar el servidor de desarrollo:**
    ```bash
    npm run dev
    ```
@@ -38,4 +45,3 @@ Sigue estos pasos para ejecutar el proyecto en tu entorno local:
 ---
 
 © Afertech - Ingeniería y Automatización.
-2026

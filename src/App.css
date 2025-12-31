@@ -1,0 +1,25 @@
+html {
+  scroll-behavior: smooth;
+  /* Compensación para que el Navbar fijo no tape el título de la sección al navegar */
+  /* Ajustado a 80px asumiendo una altura estándar de navbar */
+  scroll-padding-top: 80px;
+}
+
+/* Personalización elegante del Scrollbar para mejorar la estética general */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc; /* slate-50 (coincide con el fondo de App) */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1; /* slate-300 */
+  border-radius: 5px;
+  border: 2px solid #f8fafc;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8; /* slate-400 */
+}
